@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="description" content="EmpowHer - Career Readiness & Opportunity Platform for Class 9-10 Students">
+  <title>EmpowHer — Class 9–10 Future Readiness</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="top-nav">
+  <div class="container">
+    <div class="top-bar">
+      <button class="brand-group brand-button" onclick="DishaApp.switchTab('home')" aria-label="EmpowHer home">
+        <div class="brand-icon">✦</div><div><h1 class="brand-title">EmpowHer</h1><span class="brand-subtitle">Class 9–10 Future Readiness</span></div>
+      </button>
+      <div class="top-controls">
+        <div id="network-status-badge" class="network-badge online">🟢 <span>Offline-ready demo</span></div>
+        <div class="score-badge-header">⚡ Readiness: <strong id="header-readiness-score">20%</strong></div>
+        <button id="audio-toggle-btn" class="btn btn-secondary btn-sm" onclick="DishaApp.triggerAudioNarration()">🔊 Listen</button>
+        <button id="lang-toggle-btn" class="btn btn-secondary btn-sm" onclick="DishaApp.toggleLanguage()">🌐 हिंदी</button>
+      </div>
+    </div>
+  </div>
+  <div class="tabs-scroll-wrapper"><div class="container"><nav class="tabs-nav" role="tablist" aria-label="Main navigation">
+    <button class="nav-tab-btn active" data-tab="home">🏠 Home</button>
+    <button class="nav-tab-btn" data-tab="pehchaan">🔍 1. Discover Potential</button>
+    <button class="nav-tab-btn" data-tab="margdarshan">🗺️ 2. Pathways</button>
+    <button class="nav-tab-btn" data-tab="avasar">🎯 3. Scholarships</button>
+    <button class="nav-tab-btn" data-tab="kshamata">⚡ 4. Readiness Quests</button>
+    <button class="nav-tab-btn" data-tab="pragati">📄 5. Action Card</button>
+  </nav></div></div>
+</header>
+<main class="container">
+  <section id="tab-home" class="tab-section active">
+    <div class="hero-card">
+      <span class="hero-pill">🇮🇳 For every learner — especially resource-constrained students</span>
+      <h2 class="hero-title">Your future is bigger than your circumstances.</h2>
+      <p class="hero-lead">Discover your strengths, explore practical options after Class 10, learn about financial support, and make a plan — free and designed to work offline after loading.</p>
+      <div class="hero-cta-group">
+        <button class="btn btn-primary" onclick="DishaApp.switchTab('pehchaan')">🚀 Discover my strengths</button>
+        <button class="btn btn-outline" onclick="DishaApp.switchTab('margdarshan')">🧭 Explore pathways</button>
+        <button class="btn btn-outline" onclick="DishaApp.switchTab('avasar')">💰 Explore scholarships</button>
+      </div>
+      <div class="readiness-meter-box"><div class="meter-header"><span>🎯 Future readiness progress</span><strong id="hero-readiness-percent">20%</strong></div><div class="meter-track"><div id="hero-readiness-bar-fill" class="meter-fill" style="width:20%"></div></div><p class="small muted">Your score updates as you complete discovery and readiness quests.</p></div>
+    </div>
+    <div class="features-grid">
+      <article class="feature-pillar-card"><div class="pillar-icon">🧠</div><h3>Real-world strength discovery</h3><p>Choose how you would respond to everyday situations and discover strengths you can build on.</p><button class="btn btn-secondary btn-sm" onclick="DishaApp.switchTab('pehchaan')">Start discovery →</button></article>
+      <article class="feature-pillar-card"><div class="pillar-icon">🛠️</div><h3>Multiple pathways after 10th</h3><p>Compare academic streams, ITI, Polytechnic and selected skill-based pathways.</p><button class="btn btn-secondary btn-sm" onclick="DishaApp.switchTab('margdarshan')">View pathways →</button></article>
+      <article class="feature-pillar-card"><div class="pillar-icon">🎓</div><h3>Scholarship awareness</h3><p>Explore example schemes and learn what to verify before applying. Eligibility varies by scheme and state.</p><button class="btn btn-secondary btn-sm" onclick="DishaApp.switchTab('avasar')">Explore support →</button></article>
+      <article class="feature-pillar-card"><div class="pillar-icon">📄</div><h3>Pragati Patra action card</h3><p>Generate a printable plan to discuss with a parent, teacher or counsellor.</p><button class="btn btn-secondary btn-sm" onclick="DishaApp.switchTab('pragati')">Build my card →</button></article>
+    </div>
+    <div class="assistant-banner"><div class="assistant-header"><span class="assistant-emoji">🤖</span><div><h3>EmpowHer Saathi</h3><p class="small muted">A quick, offline-friendly guide to common questions.</p></div></div><div class="assistant-prompts">
+      <button class="prompt-chip" onclick="DishaApp.askAssistant('after10th')">Best pathway after Class 10?</button>
+      <button class="prompt-chip" onclick="DishaApp.askAssistant('polytechnicVsIti')">Polytechnic vs ITI?</button>
+      <button class="prompt-chip" onclick="DishaApp.askAssistant('scholarshipTips')">Scholarship application tips?</button>
+      <button class="prompt-chip" onclick="DishaApp.askAssistant('lowBudget')">Low-budget higher education?</button>
+    </div><div id="assistant-response" class="assistant-response-card" aria-live="polite">Choose a question above to get started.</div></div>
+  </section>
+  <section id="tab-pehchaan" class="tab-section">
+    <div class="section-intro"><p class="eyebrow">01 / SELF-DISCOVERY</p><h2>🔍 Strength & Potential Discovery</h2><p class="muted">Pick the response that feels most natural. This activity is for reflection, not a scientific or psychological assessment.</p></div>
+    <div id="simulation-container"></div>
+  </section>
+  <section id="tab-margdarshan" class="tab-section">
+    <div class="section-intro"><p class="eyebrow">02 / EXPLORE OPTIONS</p><h2>🗺️ Post-10th Pathways Navigator</h2><p class="muted">Compare common routes. Costs, duration, entry rules and job outcomes vary by institution and state; confirm details locally.</p></div>
+    <div class="filter-bar"><button class="filter-btn-path active" data-filter="all" onclick="DishaApp.filterPathways('all')">All pathways</button><button class="filter-btn-path" data-filter="vocational" onclick="DishaApp.filterPathways('vocational')">🛠️ Vocational & diplomas</button><button class="filter-btn-path" data-filter="academic" onclick="DishaApp.filterPathways('academic')">📚 Class 11–12</button></div>
+    <div id="pathways-grid" class="pathways-grid"></div>
+  </section>
+  <section id="tab-avasar" class="tab-section">
+    <div class="section-intro"><p class="eyebrow">03 / FINANCIAL AWARENESS</p><h2>🎯 Scholarships & Support Radar</h2><p class="muted">These are starting points for research, not a guarantee of eligibility or current application availability. Verify current rules on official government portals.</p></div>
+    <div class="sc-filter-row"><label>Student category <select id="filter-sc-category" class="filter-select" onchange="DishaApp.filterScholarships()"><option value="all">All categories</option><option value="SC/ST">SC / ST</option><option value="OBC/EBC">OBC / EBC</option><option value="Minority">Minority</option><option value="General">General / other</option></select></label><label>Gender eligibility <select id="filter-sc-gender" class="filter-select" onchange="DishaApp.filterScholarships()"><option value="all">All students</option><option value="girls">Girls-focused schemes</option></select></label><button class="btn btn-secondary btn-sm" onclick="DishaApp.resetScholarshipFilters()">Reset filters</button><button class="btn btn-outline btn-sm" onclick="DishaApp.showCscHelp()">ℹ️ How to apply safely</button></div>
+    <div id="scholarships-grid" class="scholarships-grid"></div>
+  </section>
+  <section id="tab-kshamata" class="tab-section">
+    <div class="section-intro"><p class="eyebrow">04 / BUILD SKILLS</p><h2>⚡ Future Readiness Quests</h2><p class="muted">Small practical activities can help you prepare for your next step. Mark each quest complete when you have tried it.</p></div>
+    <div id="quests-grid" class="quests-grid"></div>
+  </section>
+  <section id="tab-pragati" class="tab-section">
+    <div class="section-intro no-print"><p class="eyebrow">05 / TAKE ACTION</p><h2>📄 Student Action Card — Pragati Patra</h2><p class="muted">Create a one-page plan to discuss with your family, teacher or counsellor. Avoid entering sensitive personal details.</p></div>
+    <div id="pragati-report-container"></div>
+  </section>
+</main>
+<div id="generic-modal" class="modal-overlay" onclick="if(event.target===this) DishaApp.closeModal()"><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><h3 id="modal-title">Guidance</h3><button class="modal-close-btn" onclick="DishaApp.closeModal()" aria-label="Close">✕</button></div><div id="modal-content"></div></div></div>
+<footer class="site-footer"><div class="container"><strong>EmpowHer</strong> · Learn about options. Ask questions. Make an informed plan.<p>Demo project for educational awareness. Scholarship details and career suggestions must be verified with official sources and local counsellors.</p></div></footer>
+<script src="js/data.js"></script><script src="js/speech.js"></script><script src="js/simulation.js"></script><script src="js/report.js"></script><script src="js/app.js"></script>
+</body></html>
